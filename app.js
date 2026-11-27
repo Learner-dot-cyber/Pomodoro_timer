@@ -179,8 +179,8 @@ const player2 = new Audio();
 
 player2.addEventListener("timeupdate", () => {
     if (player2.duration && player2.currentTime >= player2.duration - 0.15) {
-        player.currentTime = 0;
-        player.play().catch(() => {});
+        player2.currentTime = 0;
+        player2.play().catch(() => {});
     }
 });
 
