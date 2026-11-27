@@ -169,6 +169,14 @@ const sounds = {
 };
 
 const player = new Audio();
+
+player.addEventListener("timeupdate", () => {
+    if (player.duration && player.currentTime >= player.duration - 0.15) {
+        player.currentTime = 0;
+        player.play().catch(() => {});
+    }
+});
+
 player.loop = true;
 player.volume = 1;
 
