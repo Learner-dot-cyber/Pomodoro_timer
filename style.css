@@ -226,6 +226,11 @@ button:active {
         padding: 0.6rem 1.2rem;
         box-shadow: 0 14px 24px rgba(30, 41, 35, 0.12);
     }
+   #Focus_min:not(:empty)::after {
+        content: ":";
+        margin: 0 0.15em;
+        color: #29704f;
+    }
 
     #Focus_min,
     #Focus_sec {
