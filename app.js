@@ -177,7 +177,7 @@ player.addEventListener("timeupdate", () => {
     }
 });
 
-player.loop = true;
+player.loop = false;
 player.volume = 1;
 
 const soundRadios = document.querySelectorAll('input[name="sound"]');
