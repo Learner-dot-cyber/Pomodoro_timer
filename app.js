@@ -86,9 +86,10 @@ function timer(number){
             }else{
             i += 1;
             
-            const player = new Audio();
-            player.src = "fin_timer.mp3";
-            player.play();
+            const player1 = new Audio();
+            player1.src = "fin_timer.mp3";
+            player1.volume = 1;
+            player1.play();
             
             Focus_min.textContent = "";
             Focus_sec.textContent = "";
@@ -174,25 +175,25 @@ const sounds = {
     BrownNoise: "BrownNoise.mp3"    
 };
 
-const player = new Audio();
+const player2 = new Audio();
 
-player.addEventListener("timeupdate", () => {
-    if (player.duration && player.currentTime >= player.duration - 0.15) {
+player2.addEventListener("timeupdate", () => {
+    if (player2.duration && player2.currentTime >= player2.duration - 0.15) {
         player.currentTime = 0;
         player.play().catch(() => {});
     }
 });
 
-player.loop = false;
-player.volume = 1;
+player2.loop = false;
+player2.volume = 1;
 
 const soundRadios = document.querySelectorAll('input[name="sound"]');
 
 soundRadios.forEach((radio) => {
     radio.addEventListener("change", () => {
         if (radio.checked) {
-            player.src = sounds[radio.id];
-            player.play();
+            player2.src = sounds[radio.id];
+            player2.play();
         }
     });
 });
