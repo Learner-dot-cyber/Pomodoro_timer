@@ -31,98 +31,80 @@ body {
 
 @media (max-width: 600px) {
     body {
-        background-image: url("bg_mobile.jpg");
-        gap: 0.6rem;
-        padding: 1.25rem 0.75rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+        padding: 1.1rem 0.75rem;
+        background-attachment: scroll;
     }
 
+    /* Messages pinned at the top and sized to fit the message text */
     .Messages {
-        width: 100%;
+        order: -1;
+        display: grid;
+        width: fit-content;
+        max-width: 92vw;
         min-width: unset;
-        padding: 0.85rem 1.1rem;
-        border-radius: 16px;
+        padding: 0.55rem 1.1rem;
+        border-radius: 14px;
     }
 
     #RoundNum {
-    font-family: "Caveat", cursive;
-    font-size: 1.05rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    color: #C67D53;
-}
+        font-size: 1rem;
+    }
 
     #cycleTitle {
-    font-family: "Dancing Script", cursive;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #2C221E;
-    text-shadow: 1px 2px 0 rgba(198, 125, 83, 0.25);
-}
-    #Focus_mess,
-#ShortBreak_mess,
-#LongBreak_mess {
-    font-family: "Caveat", cursive;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #4A382F;
-}
+        font-size: 1.4rem;
+    }
 
+    #Focus_mess,
+    #ShortBreak_mess,
+    #LongBreak_mess {
+        font-size: 1.05rem;
+    }
+
+    /* Compact timer box and digits */
     .Timers {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 253, 249, 0.85);
-    border: 2px solid #2C221E;
-    border-radius: 18px;
-    padding: 0.7rem 1.35rem;
-    box-shadow: 0 20px 20px rgba(30, 41, 35, 0.08);
-}
+        order: 0;
+        padding: 0.65rem 1.2rem;
+        border-radius: 16px;
+    }
 
     #Focus_min,
     #Focus_sec {
-    font-size: clamp(1.85rem, 5vw, 2.65rem);
-    font-weight: 700;
-    font-variant-numeric: tabular-nums;
-    line-height: 1;
-    letter-spacing: 1px;
-    text-shadow: 0 10px 10px rgba(95, 56, 11, 0.2);
-    color: #2a5645;
-}
-
-    .buttons {
-        width: 100%;
-        gap: 0.65rem;
+        font-size: clamp(1.75rem, 8vw, 2.35rem);
     }
 
-    button {
-        flex: 1 1 auto;
-        font-size: 1.15rem;
-        padding: 0.6rem 0.9rem;
+    /* All buttons in a single row and shaped as circles */
+    .buttons {
+        order: 1;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        gap: 0.65rem;
+        width: 100%;
+    }
+
+    .buttons button {
+        width: 4.1rem;
+        height: 4.1rem;
+        padding: 0;
+        border-radius: 50%;
+        font-size: 0.85rem;
+        line-height: 1.1;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        flex-shrink: 0;
     }
 
     .Sound {
-        width: 100%;
-        padding: 0.85rem 0.9rem;
-        padding-bottom: 1.75rem; 
-    }
-
-    .Sound label {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-        gap: 0.75rem;
-        width: 100%;
-    }
-
-    #beach,
-    #forest,
-    #fire,
-    #cafe,
-    #BrownNoise {
-        width: 1.2rem;
-        height: 1.2rem;
-        margin-left: 0.35rem;
+        order: 2;
+        padding: 0.75rem 1rem;
+        gap: 0.85rem;
     }
 }
 
