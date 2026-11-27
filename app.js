@@ -21,6 +21,7 @@ let count = 1;
 Focus_mess.textContent = "Press Start to start focusing."
 
 function timer(number){
+    
     Pause.textContent = "Pause";
     if (number == 0){
         if (i == 0 || i == 2 || i == 4 || i == 6){
@@ -84,6 +85,11 @@ function timer(number){
 
             }else{
             i += 1;
+            
+            const player = new Audio();
+            player.src = "fin_timer.mp3";
+            player.play();
+            
             Focus_min.textContent = "";
             Focus_sec.textContent = "";
             if(i == 0 || i == 2 || i == 4 || i == 6){
