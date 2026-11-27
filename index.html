@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Pomodoro Timer</title>
+</head>
+<body>
+
+    <div class ="Messages">
+        <p id="RoundNum"></p>
+        <p id="cycleTitle"></p>
+        <p id="Focus_mess"></p>
+        <p id="ShortBreak_mess"></p>
+        <p id="LongBreak_mess"></p>
+    </div>
+    
+    <div class="Timers">
+        <p id="Focus_min"></p>
+        <p id="Focus_sec"></p>
+    </div>
+
+
+    <div class="buttons">
+        <button id="Start">Start</button>
+        <button id="Reset">Reset</button>
+        <button id="Pause"></button>
+    </div>
+
+<br><br>
+    <div class="Sound">
+        <label>
+            Sound :
+            <span class="radio-wrap" data-sound="beach">
+                <input type="radio" name="sound" id="beach">
+            </span>
+            <span class="radio-wrap" data-sound="forest">
+                <input type="radio" name="sound" id="forest">
+            </span>
+            <span class="radio-wrap" data-sound="fire">
+                <input type="radio" name="sound" id="fire">
+            </span>
+            <span class="radio-wrap" data-sound="cafe">
+                <input type="radio" name="sound" id="cafe">
+            </span>
+            <span class="radio-wrap" data-sound="Brown_Noise">
+                <input type="radio" name="sound" id="BrownNoise">
+            </span>
+            <span class="radio-wrap" data-sound="None">
+                <input type="radio" name="sound" id="None">
+            </span>
+        </label>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

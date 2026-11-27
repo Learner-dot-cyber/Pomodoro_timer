@@ -1,0 +1,415 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    padding: 2rem 1rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-image: url(Bg_laptop.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #1e2923;
+}
+
+@media (hover: none) {
+    .Sound .radio-wrap:has(input:checked)::after,
+    .Sound .radio-wrap:active::after {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        gap: 1rem;
+        padding: 1.5rem 1rem;
+        background-attachment: scroll; 
+    }
+
+    .Timers {
+        padding: 1.25rem 2rem;
+    }
+
+    .buttons {
+        gap: 1.15rem;
+    }
+
+    button {
+        font-size: 1.45rem;
+        padding: 0.65rem 1.2rem;
+    }
+
+    .Sound {
+        gap: 1rem;
+        padding: 0.9rem 1.25rem;
+    }
+
+    #beach,
+    #forest,
+    #fire,
+    #cafe,
+    #BrownNoise,
+    #None {
+        margin-left: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        background-image: url("bg_mobile.jpg");
+        gap: 0.9rem;
+        padding: 1.25rem 0.75rem;
+    }
+
+    .Messages {
+        width: 100%;
+        min-width: unset;
+        padding: 0.85rem 1.1rem;
+        border-radius: 16px;
+    }
+
+    #RoundNum {
+        font-size: 1.25rem;
+    }
+
+    #cycleTitle {
+        font-size: 1.75rem;
+    }
+
+    #Focus_mess,
+    #ShortBreak_mess,
+    #LongBreak_mess {
+        font-size: 1.25rem;
+    }
+
+    .Timers {
+        width: 100%;
+        padding: 1.1rem 1.25rem;
+        border-radius: 20px;
+    }
+
+    #Focus_min,
+    #Focus_sec {
+        font-size: clamp(2.75rem, 15vw, 3.75rem);
+    }
+
+    .buttons {
+        width: 100%;
+        gap: 0.65rem;
+    }
+
+    button {
+        flex: 1 1 auto;
+        font-size: 1.15rem;
+        padding: 0.6rem 0.9rem;
+    }
+
+    .Sound {
+        width: 100%;
+        padding: 0.85rem 0.9rem;
+        padding-bottom: 1.75rem; 
+    }
+
+    .Sound label {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        width: 100%;
+    }
+
+    #beach,
+    #forest,
+    #fire,
+    #cafe,
+    #BrownNoise {
+        width: 1.2rem;
+        height: 1.2rem;
+        margin-left: 0.35rem;
+    }
+}
+
+.Timers {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 253, 249, 0.92);
+    border: 3px solid #2C221E;
+    border-radius: 24px;
+    padding: 1.5rem 2.5rem;
+    box-shadow: 0 40px 30px rgba(30, 41, 35, 0.08);
+}
+
+#Focus_min,
+#Focus_sec {
+    font-size: clamp(3rem, 10vw, 4.75rem);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+    letter-spacing: 2px;
+    text-shadow: 0 17px 15px rgba(95, 56, 11, 0.25);
+    color: #2a5645;
+}
+
+#Focus_min:not(:empty)::after {
+    content: ":";
+    margin: 0 0.15em;
+    color: #29704f;
+}
+
+.Messages {
+    display: grid;
+    grid-template-rows: 1fr;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+
+    min-width: 280px;
+    max-width: 90vw;
+    padding: 1rem 2rem;
+
+    background: rgba(255, 253, 249, 0.92);
+    backdrop-filter: blur(8px);
+    border-radius: 18px;
+    border: 2px solid #2C221E;
+
+    box-shadow:
+        0 6px 0 #C67D53,
+        0 14px 24px rgba(44, 34, 30, 0.25);
+
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    overflow: hidden;
+    transition:
+        grid-template-rows 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        padding 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.35s ease,
+        transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.25s ease;
+}
+
+.Messages:not(:has(p:not(:empty))) {
+    grid-template-rows: 0fr;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-width: 0;
+    opacity: 0;
+    transform: translateY(-1px) scale(0.97);
+    pointer-events: none;
+}
+
+.Messages p {
+    margin: 0.15rem 0;
+    transition: opacity 0.35s ease, transform 0.75s ease;
+}
+
+.Messages p:empty {
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 0.25s ease, transform 0.75s ease;
+}
+
+.Messages p:not(:empty) {
+    opacity: 1;
+    transform: translateY(0);
+    animation: textGlide 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes textGlide {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#RoundNum {
+    font-family: "Caveat", cursive;
+    font-size: 1.45rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #C67D53;
+}
+
+#cycleTitle {
+    font-family: "Dancing Script", cursive;
+    font-size: 2.15rem;
+    font-weight: 700;
+    color: #2C221E;
+    text-shadow: 1px 2px 0 rgba(198, 125, 83, 0.25);
+}
+
+#Focus_mess,
+#ShortBreak_mess,
+#LongBreak_mess {
+    font-family: "Caveat", cursive;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #4A382F;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+button {
+    font-family: inherit;
+    font-size: 2rem;
+    font-weight: 600;
+    border: 0.95px solid #000000;
+    border-radius: 9999px;
+    padding: 0.7rem 1.35rem;
+    cursor: pointer;
+    transition: transform 0.12s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+button:hover {
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+#Start {
+    background-color: #5A3A35;
+    color: #e8dfc4;
+    border: 2px solid #3E2A24;
+}
+
+#Start:hover {
+    background-color: #9A7F6F;
+}
+
+#Pause {
+    background-color: #FFF0D6 ;
+    color: #6A5C55;
+    border: 2px solid #cabfa8 ;
+}
+
+#Pause:hover {
+    background-color: #F7C7A8;
+}
+
+#Reset {
+    background-color: #F4DCCB;
+    color: #C39B86 ;
+    border: 2px solid #cfc3ab ;
+}
+
+#Reset:hover {
+    background-color: #E6D0A8;
+}
+
+.Sound {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+
+    padding: 1rem 2rem;
+    max-width: 90vw;
+
+    background: rgba(255, 253, 249, 0.92);
+    backdrop-filter: blur(8px);
+    border: 2px solid #2C221E;
+    border-radius: 18px;
+}
+
+.Sound .radio-wrap {
+    position: relative;
+    display: inline-flex;
+}
+
+.Sound .radio-wrap::after {
+    content: attr(data-sound);
+    position: absolute;
+    bottom: calc(100% + -57px);
+    left: 50%;
+    transform: translateX(-50%) translateY(-5px);
+
+    background: rgba(255, 253, 249, 0.92);;          
+    color: #5A3A35;
+    font-family: "Caveat", cursive;
+    font-size: 1.15rem;
+    font-weight: 700;
+    white-space: nowrap;
+    padding: 0.25rem 0.65rem;
+    border-radius: 8px;
+    border: 1px solid #C67D53;
+    box-shadow: 0 6px 14px rgba(44, 34, 30, 0.25);
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 10;
+}
+
+.Sound .radio-wrap:hover::after,
+.Sound .radio-wrap:has(input:focus-visible)::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+
+#beach {
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-left: 2rem;
+    accent-color: #5A3A35;
+    cursor: pointer;
+}
+#forest {
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-left: 2rem;
+    accent-color: #5A3A35;
+    cursor: pointer;
+}
+#fire {
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-left: 2rem;
+    accent-color: #5A3A35;
+    cursor: pointer;
+}
+#cafe {
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-left: 2rem;
+    accent-color: #5A3A35;
+    cursor: pointer;
+}
+#BrownNoise {
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-left: 2rem;
+    accent-color: #5A3A35;
+    cursor: pointer;
+}
+
+#None {
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-left: 2rem;
+    accent-color: #5A3A35;
+    cursor: pointer;
+}
