@@ -31,13 +31,13 @@ function timer(number){
             cycleTitle.textContent = "Focus #" + String(i/2 +1);
             Focus_min.textContent = "25";
             Focus_sec.textContent = "00";
-            number = 1;
+            number = 1500;
         }else if (i == 1 || i == 3 || i == 5){
                 RoundNum.textContent = "Round #" + String(count);
                 cycleTitle.textContent = "Short Break #" + String((i-1)/2 +1);
-                Focus_min.textContent = "05";
+                Focus_min.textContent = "01";
                 Focus_sec.textContent = "00";
-                number = 300;
+                number = 60;
         }else if (i == 7){
                 RoundNum.textContent = "Round #" + String(count);
                 cycleTitle.textContent = "Long Break";
@@ -155,13 +155,13 @@ function reset(){
             cycleTitle.textContent = "Focus #" + String(i/2 +1);
             Focus_min.textContent = "25";
             Focus_sec.textContent = "00";
-            seconds = 1;
+            seconds = 1500;
         }else if (i == 1 || i == 3 || i == 5){
                 RoundNum.textContent = String(count);
                 cycleTitle.textContent = "Short Break #" + String((i-1)/2 +1);;
-                Focus_min.textContent = "05";
+                Focus_min.textContent = "01";
                 Focus_sec.textContent = "00";
-                seconds = 300;
+                seconds = 60;
         }else if (i == 7){
                 RoundNum.textContent = String(count);
                 cycleTitle.textContent = "Long Break";
