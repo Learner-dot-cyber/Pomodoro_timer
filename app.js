@@ -11,9 +11,11 @@ let Start = document.getElementById("Start");
 let Reset = document.getElementById("Reset");
 let Pause = document.getElementById("Pause");
 
-let intervalId = null
+let intervalId = null;
+const player2 = new Audio();
 
 Start.onclick = timer1;
+
 
 let i = 0;
 let seconds = 0;
@@ -29,7 +31,7 @@ function timer(number){
             cycleTitle.textContent = "Focus #" + String(i/2 +1);
             Focus_min.textContent = "25";
             Focus_sec.textContent = "00";
-            number = 1500;
+            number = 1;
         }else if (i == 1 || i == 3 || i == 5){
                 RoundNum.textContent = "Round #" + String(count);
                 cycleTitle.textContent = "Short Break #" + String((i-1)/2 +1);
@@ -90,6 +92,13 @@ function timer(number){
             player1.src = "fin_timer.mp3";
             player1.volume = 1;
             player1.play();
+            player1.volume = 1;
+            player1.addEventListener("error", () => {
+                console.error("Failed to load fin_timer.mp3");
+            });
+            player1.play().catch((err) => {
+                console.warn("Playback blocked or failed:", err);
+             });
             
             Focus_min.textContent = "";
             Focus_sec.textContent = "";
@@ -146,7 +155,7 @@ function reset(){
             cycleTitle.textContent = "Focus #" + String(i/2 +1);
             Focus_min.textContent = "25";
             Focus_sec.textContent = "00";
-            seconds = 1500;
+            seconds = 1;
         }else if (i == 1 || i == 3 || i == 5){
                 RoundNum.textContent = String(count);
                 cycleTitle.textContent = "Short Break #" + String((i-1)/2 +1);;
@@ -174,8 +183,6 @@ const sounds = {
     cafe: "cafe.mp3",
     BrownNoise: "BrownNoise.mp3"    
 };
-
-const player2 = new Audio();
 
 player2.addEventListener("timeupdate", () => {
     if (player2.duration && player2.currentTime >= player2.duration - 0.15) {
