@@ -19,34 +19,75 @@
         gap: 0.85rem;
         padding: 1.1rem 0.75rem;
         background-attachment: scroll;
+        background-image: url(:bg_mobile.jpg);
     }
 
     /* Messages pinned at the top and sized to fit the message text */
     .Messages {
-        order: -1;
         display: grid;
-        width: fit-content;
-        max-width: 92vw;
-        min-width: unset;
-        padding: 0.55rem 1.1rem;
-        border-radius: 14px;
+    grid-template-rows: 1fr;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+
+    display: grid;
+    width: fit-content;
+    max-width: 92vw;
+    min-width: unset;
+    padding: 0.55rem 1.1rem;
+    border-radius: 14px;
+
+    background: rgba(255, 253, 249, 0.92);
+    backdrop-filter: blur(8px);
+    border: 2px solid #2C221E;
+
+    box-shadow:
+        0 6px 0 #C67D53,
+        0 14px 24px rgba(44, 34, 30, 0.25);
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    overflow: hidden;
+    transition:
+    grid-template-rows 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    padding 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.35s ease,
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s ease;
+    order: -1;
+        
     }
 
     #RoundNum {
         font-size: 1rem;
+        font-family: "Caveat", cursive;
+        color: #4A382F;
     }
 
     #cycleTitle {
         font-size: 1.4rem;
+        font-family: "Dancing Script", cursive;
+        color: #4A382F;
     }
 
     #Focus_mess,
     #ShortBreak_mess,
     #LongBreak_mess {
         font-size: 1.05rem;
+        font-family: "Caveat", cursive;
+        color: #4A382F;
     }
 
-    /* Compact timer box and digits */
+    .Timers {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 253, 249, 0.92);
+    border: 0;
+    padding: 0.65rem 1.2rem;
+    border-radius: 16px;
+    box-shadow: 0 40px 30px rgba(30, 41, 35, 0.08);
+}
+
     .Timers {
         order: 0;
         padding: 0.65rem 1.2rem;
@@ -167,32 +208,6 @@ body {
         box-shadow 0.25s ease;
 }
 
-.Messages:not(:has(p:not(:empty))) {
-    grid-template-rows: 0fr;
-    padding-top: 0;
-    padding-bottom: 0;
-    border-width: 0;
-    opacity: 0;
-    transform: translateY(-1px) scale(0.97);
-    pointer-events: none;
-}
-
-.Messages p {
-    margin: 0.15rem 0;
-    transition: opacity 0.35s ease, transform 0.75s ease;
-}
-
-.Messages p:empty {
-    opacity: 0;
-    transform: translateY(-6px);
-    transition: opacity 0.25s ease, transform 0.75s ease;
-}
-
-.Messages p:not(:empty) {
-    opacity: 1;
-    transform: translateY(0);
-    animation: textGlide 1s cubic-bezier(0.22, 1, 0.36, 1);
-}
 
 @keyframes textGlide {
     from {
@@ -248,6 +263,34 @@ button {
     transition: transform 0.12s ease, background-color 0.15s ease, box-shadow 0.15s ease;
 }
 } /*ici*/
+
+.Messages:not(:has(p:not(:empty))) {
+    grid-template-rows: 0fr;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-width: 0;
+    opacity: 0;
+    transform: translateY(-1px) scale(0.97);
+    pointer-events: none;
+}
+
+.Messages p {
+    margin: 0.15rem 0;
+    transition: opacity 0.35s ease, transform 0.75s ease;
+}
+
+.Messages p:empty {
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 0.25s ease, transform 0.75s ease;
+}
+
+.Messages p:not(:empty) {
+    opacity: 1;
+    transform: translateY(0);
+    animation: textGlide 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 
 button:hover {
     transform: translateY(-1px);
