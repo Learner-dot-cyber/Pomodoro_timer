@@ -156,14 +156,14 @@ button:active {
    ========================================= */
 @media (max-width: 600px) {
     body {
-        min-height: 100vh;
+        min-height: 100dvh;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 0.85rem;
-        padding: 1.1rem 0.75rem;
-        background-image: url(bg_mobile.jpg);
+        gap: 0.9rem;
+        padding: 1rem 0.75rem;
+        background-image: url("bg_mobile.jpg");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -171,6 +171,7 @@ button:active {
         color: #1e2923;
     }
 
+    /* Message card at top, sized to fit the message */
     .Messages {
         order: -1;
         display: grid;
@@ -180,36 +181,29 @@ button:active {
         text-align: center;
         width: fit-content;
         max-width: 92vw;
-        min-width: unset;
-        padding: 0.55rem 1.1rem;
+        min-width: 0;
+        padding: 0.5rem 1.05rem;
         border-radius: 14px;
         background: rgba(255, 253, 249, 0.92);
         backdrop-filter: blur(8px);
         border: 2px solid #2C221E;
         box-shadow:
-            0 6px 0 #C67D53,
-            0 14px 24px rgba(44, 34, 30, 0.25);
+            0 5px 0 #C67D53,
+            0 12px 20px rgba(44, 34, 30, 0.22);
         opacity: 1;
         transform: translateY(0) scale(1);
-        overflow: hidden;
-        transition:
-            grid-template-rows 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-            padding 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-            opacity 0.35s ease,
-            transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
-            box-shadow 0.25s ease;
     }
 
     #RoundNum {
         font-family: "Caveat", cursive;
-        font-size: 1rem;
-        color: #4A382F;
+        font-size: 0.95rem;
+        color: #C67D53;
     }
 
     #cycleTitle {
         font-family: "Dancing Script", cursive;
-        font-size: 1.4rem;
-        color: #4A382F;
+        font-size: 1.35rem;
+        color: #2C221E;
     }
 
     #Focus_mess,
@@ -220,33 +214,29 @@ button:active {
         color: #4A382F;
     }
 
+    /* Compact timer */
     .Timers {
         order: 0;
         display: flex;
         align-items: center;
         justify-content: center;
         background: rgba(255, 253, 249, 0.92);
-        border: 0;
-        padding: 0.65rem 1.2rem;
+        border: 2px solid #2C221E;
         border-radius: 16px;
-        box-shadow: 0 40px 30px rgba(30, 41, 35, 0.08);
+        padding: 0.6rem 1.2rem;
+        box-shadow: 0 14px 24px rgba(30, 41, 35, 0.12);
     }
 
     #Focus_min,
     #Focus_sec {
-        font-size: clamp(1.75rem, 8vw, 2.35rem);
+        font-size: clamp(1.75rem, 8vw, 2.25rem);
         font-weight: 700;
         font-variant-numeric: tabular-nums;
         line-height: 1;
         color: #2a5645;
     }
 
-    #Focus_min:not(:empty)::after {
-        content: ":";
-        margin: 0 0.15em;
-        color: #29704f;
-    }
-
+    /* All buttons on a single line, circular */
     .buttons {
         order: 1;
         display: flex;
@@ -259,29 +249,56 @@ button:active {
     }
 
     .buttons button {
-        width: 4.1rem;
-        height: 4.1rem;
-        padding: 0;
+        width: 4.35rem;
+        height: 4.35rem;
+        padding: 0 0.25rem;
         border-radius: 50%;
-        font-size: 0.85rem;
+        font-size: 0.82rem;
         font-weight: 600;
         line-height: 1.1;
         display: inline-flex;
         align-items: center;
         justify-content: center;
         text-align: center;
-        flex-shrink: 0;
-        cursor: pointer;
-        transition: transform 0.12s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+        flex: 0 0 auto;
     }
 
+    /* Keep "Sound :" and all radio circles neatly aligned */
     .Sound {
         order: 2;
+        width: auto;
+        max-width: 94vw;
         padding: 0.75rem 1rem;
-        gap: 0.85rem;
+        padding-bottom: 1.5rem;
+        border-radius: 16px;
+    }
+
+    .Sound label {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 0.55rem 0.7rem;
+        font-size: 0.95rem;
+    }
+
+    .Sound .radio-wrap {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #beach,
+    #forest,
+    #fire,
+    #cafe,
+    #BrownNoise,
+    #None {
+        width: 1.1rem;
+        height: 1.1rem;
+        margin-left: 0;
     }
 }
-
 /* =========================================
    LAPTOP / DESKTOP (>= 601px)
    ========================================= */
